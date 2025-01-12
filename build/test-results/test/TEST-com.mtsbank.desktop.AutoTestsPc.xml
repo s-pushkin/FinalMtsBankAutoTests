@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mtsbank.desktop.AutoTestsPc" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-01-12T14:12:26" hostname="LYNX" time="45.304">
+  <properties/>
+  <testcase name="checkMtsJobs()" classname="com.mtsbank.desktop.AutoTestsPc" time="35.887"/>
+  <testcase name="checkDebetCards()" classname="com.mtsbank.desktop.AutoTestsPc" time="39.914"/>
+  <testcase name="checkBancomats()" classname="com.mtsbank.desktop.AutoTestsPc" time="40.68"/>
+  <testcase name="checkContribution()" classname="com.mtsbank.desktop.AutoTestsPc" time="42.749"/>
+  <testcase name="checkDeposits()" classname="com.mtsbank.desktop.AutoTestsPc" time="45.304"/>
+  <system-out><![CDATA[В названии карты есть слово кредитная:
+<кредитная карта
+мтс деньги>
+
+Текст 'Access Denied' найден на странице.
+В названии карты есть слово кредитная:
+<кредитная карта
+мтс zero>
+
+В названии карты есть слово кредитная:
+<премиальная кредитная карта
+mir supreme>
+
+Найдено банкоматов работающих круглосуточно: 4
+Процент по вкладу рассчитан верно
+Процент по вкладу рассчитан верно
+Выплаты по ставке рассчитаны верно
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

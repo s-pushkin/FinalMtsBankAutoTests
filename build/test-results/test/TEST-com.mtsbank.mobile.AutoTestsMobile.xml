@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mtsbank.mobile.AutoTestsMobile" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-01-12T14:12:26" hostname="LYNX" time="42.734">
+  <properties/>
+  <testcase name="checkPersonalAccount()" classname="com.mtsbank.mobile.AutoTestsMobile" time="37.472"/>
+  <testcase name="checkCreditCards()" classname="com.mtsbank.mobile.AutoTestsMobile" time="37.844"/>
+  <testcase name="checkMtsJobs()" classname="com.mtsbank.mobile.AutoTestsMobile" time="38.247"/>
+  <testcase name="checkDebetCards()" classname="com.mtsbank.mobile.AutoTestsMobile" time="39.221"/>
+  <testcase name="checkCredit()" classname="com.mtsbank.mobile.AutoTestsMobile" time="42.734"/>
+  <system-out><![CDATA[Running desktop test with window size: 1000x800
+Running mobile test with emulation: iPhone 12 Pro
+Running desktop test with window size: 1000x800
+Running desktop test with window size: 1000x800
+Running mobile test with emulation: iPhone 12 Pro
+Running mobile test with emulation: iPhone 12 Pro
+Running desktop test with window size: 1000x800
+Running mobile test with emulation: iPhone 12 Pro
+Running desktop test with window size: 1000x800
+Running mobile test with emulation: iPhone 12 Pro
+В названии карты есть слово дебетовая:
+<дебетовая карта
+мтс деньги>
+
+В названии карты есть слово дебетовая:
+<дебетовая карта
+скидка везде>
+
+В названии карты нет слово дебетовая:
+<зарплатная карта>
+
+В названии карты есть слово дебетовая:
+<премиальная дебетовая карта
+mir supreme>
+
+В названии карты есть слово дебетовая:
+<дебетовая карта
+mir supreme>
+
+В названии карты есть слово дебетовая:
+<дебетовая карта
+мтс деньги>
+
+В названии карты есть слово дебетовая:
+<дебетовая карта
+скидка везде>
+
+В названии карты нет слово дебетовая:
+<зарплатная карта>
+
+В названии карты есть слово дебетовая:
+<премиальная дебетовая карта
+mir supreme>
+
+В названии карты есть слово дебетовая:
+<дебетовая карта
+mir supreme>
+
+]]></system-out>
+  <system-err><![CDATA[янв. 12, 2025 5:12:40 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 130; Please update to a Selenium version that supports CDP version 131
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+янв. 12, 2025 5:12:40 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 130; Please update to a Selenium version that supports CDP version 131
+янв. 12, 2025 5:12:42 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 130; Please update to a Selenium version that supports CDP version 131
+янв. 12, 2025 5:12:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 130; Please update to a Selenium version that supports CDP version 131
+янв. 12, 2025 5:12:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 130; Please update to a Selenium version that supports CDP version 131
+янв. 12, 2025 5:12:44 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 130; Please update to a Selenium version that supports CDP version 131
+янв. 12, 2025 5:12:46 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 130; Please update to a Selenium version that supports CDP version 131
+янв. 12, 2025 5:12:47 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 130; Please update to a Selenium version that supports CDP version 131
+янв. 12, 2025 5:12:49 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 130; Please update to a Selenium version that supports CDP version 131
+янв. 12, 2025 5:12:51 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 131, returning the closest version; found: 130; Please update to a Selenium version that supports CDP version 131
+]]></system-err>
+</testsuite>
