@@ -1,6 +1,5 @@
 package com.mtsbank.mobile;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.mtsbank.mobile.credit.*;
 import com.mtsbank.mobile.creditcard.*;
@@ -8,6 +7,8 @@ import com.mtsbank.mobile.debetcards.*;
 import com.mtsbank.mobile.loginmtsbank.*;
 import com.mtsbank.mobile.vacancy.*;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -51,12 +52,14 @@ public class AutoTestsMobile {
     }
 
     @Test
+    @Description("Проверка кредитных карт")
     public void checkCreditCards() {
         openCreditCardsPage.openCreditCardsPage();
         checkCreditCardsName.checkNameCards();
     }
 
     @Test
+    @Description("Проверка кредитов")
     public void checkCredit() {
         openCreditPage.openCreditPage();
         setCreditProperties.setCreditProperties();
@@ -64,6 +67,7 @@ public class AutoTestsMobile {
     }
 
     @Test
+    @Description("Проверка вакансий")
     public void checkMtsJobs() {
         openVacansiesPageMobile.openVacansiesPage();
         searchJobsMobile.searchJobs();
@@ -71,14 +75,16 @@ public class AutoTestsMobile {
     }
 
     @Test
+    @Description("Проверка дебетовых карт")
     public void checkDebetCards() {
         clickDebetCards.clickDebetCards();
         checkNameCards.checkNameCards();
     }
 
     @Test
+    @Description("Проверка личного кабинета")
     public void checkPersonalAccount() {
-        WebDriver driver = Selenide.webdriver().driver().getWebDriver();
+        WebDriver driver = WebDriverRunner.getWebDriver();
         openMtsBankPersonalAccount.openMtsBankPersonalAccount();
         String secondTab = driver.getWindowHandles().toArray()[1].toString();
         driver.switchTo().window(secondTab);
