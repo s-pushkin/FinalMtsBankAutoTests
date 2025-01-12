@@ -7,12 +7,16 @@ import com.mtsbank.desktop.debetcards.*;
 import com.mtsbank.desktop.deposit.*;
 import com.mtsbank.desktop.vacancy.*;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 @Execution(ExecutionMode.CONCURRENT)
 public class AutoTestsPc {
@@ -53,42 +57,51 @@ public class AutoTestsPc {
     }
 
     @Test
+    @Description("Проверка дебетовых карт")
     public void checkDebetCards() {
+        clickDebetCards();
+        checkNameCards();
+    }
 
+    @Step("Клик по разделу дебетовых карт")
+    private void clickDebetCards() {
         clickDebetCards.clickDebetCards();
+    }
+
+    @Step("Проверка названий карт")
+    private void checkNameCards() {
         checkNameCards.checkNameCards();
     }
 
     @Test
+    @Description("Проверка банкоматов")
     public void checkBancomats() {
-
         openBankomatsPage.openBancomatsPage();
         setBancomatsProperties.setBancomatsProperties();
         checkWorkTime.checkWorkTime();
     }
 
     @Test
+    @Description("Проверка вкладов")
     public void checkContribution() {
-
         openContributionPage.openContributionPage();
         setContributionProperties.setContributionProperties();
         checkContributionCalculations.checkContributionCalculations();
     }
 
     @Test
+    @Description("Проверка депозитов")
     public void checkDeposits() {
-
         openDepositsPage.openDepositsPage();
         setDepositProperties.setDepositProperties();
         checkDepositProperties.checkDepositProperties();
     }
 
     @Test
+    @Description("Проверка вакансий")
     public void checkMtsJobs() {
-
         openVacansiesPage.openVacansiesPage();
         searchJobs.searchJobs();
         checkVacansies.checkVacansies();
     }
-
 }
