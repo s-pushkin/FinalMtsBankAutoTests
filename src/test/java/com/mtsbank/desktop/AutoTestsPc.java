@@ -40,16 +40,18 @@ public class AutoTestsPc {
     private CheckVacansies checkVacansies = new CheckVacansies();
 
     @BeforeEach
-    public void setUp() {
-        ChromeOptions options = new ChromeOptions();
-        options.setCapability("browserVersion", "116.0.5845.111");
-        options.addArguments("--window-size=1000,800");
-        System.out.println("Running desktop test with window size: 1000x800");
+public void setUp() {
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--no-sandbox"); // Обязательно для CI
+    options.addArguments("--disable-dev-shm-usage"); // Обязательно для CI
+    options.addArguments("--headless"); // Запуск в headless-режиме
+    options.addArguments("--window-size=1000,800");
+    System.out.println("Running desktop test with window size: 1000x800");
 
-        WebDriver driver = new ChromeDriver(options);
-        WebDriverRunner.setWebDriver(driver);
-        driver.get("https://www.mtsbank.ru/");
-    }
+    WebDriver driver = new ChromeDriver(options);
+    WebDriverRunner.setWebDriver(driver);
+    driver.get("https://www.mtsbank.ru/");
+}
 
     @AfterEach
     public void tearDown() {
