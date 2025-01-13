@@ -45,6 +45,9 @@ tasks.withType(ProcessResources) {
     filteringCharset = 'UTF-8'
 }
 
-tasks.register('allureReport', Exec) {
-    commandLine 'allure', 'generate', 'build/allure-results', '-o', 'build/reports/allure-report', '--clean'
+// Убедитесь, что задача allureReport определена только один раз
+if (!tasks.findByName('allureReport')) {
+    tasks.register('allureReport', Exec) {
+        commandLine 'allure', 'generate', 'build/allure-results', '-o', 'build/reports/allure-report', '--clean'
+    }
 }
