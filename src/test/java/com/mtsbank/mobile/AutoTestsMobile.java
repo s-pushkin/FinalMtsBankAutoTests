@@ -1,6 +1,5 @@
 package com.mtsbank.mobile;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.mtsbank.mobile.credit.*;
 import com.mtsbank.mobile.creditcard.*;
@@ -85,15 +84,10 @@ public class AutoTestsMobile {
     @Test
     @Description("Проверка личного кабинета")
     public void checkPersonalAccount() {
-        WebDriver driver = Selenide.webdriver().driver().getWebDriver();
+        WebDriver driver = WebDriverRunner.getWebDriver();
         openMtsBankPersonalAccount.openMtsBankPersonalAccount();
         String secondTab = driver.getWindowHandles().toArray()[1].toString();
         driver.switchTo().window(secondTab);
         checkOpenedPersonalAccount.checkOpenedPersonalAccount();
-    }
-
-    @Attachment(type = "image/png", value = "Screenshot")
-    private byte[] takeScreenshot() {
-        return Selenide.screenshot(OutputType.BYTES);
     }
 }
