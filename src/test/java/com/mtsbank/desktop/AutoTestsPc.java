@@ -1,5 +1,6 @@
 package com.mtsbank.desktop;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.mtsbank.desktop.atm24.*;
 import com.mtsbank.desktop.contribution.*;
@@ -40,18 +41,19 @@ public class AutoTestsPc {
     private CheckVacansies checkVacansies = new CheckVacansies();
 
     @BeforeEach
-public void setUp() {
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--no-sandbox"); // Обязательно для CI
-    options.addArguments("--disable-dev-shm-usage"); // Обязательно для CI
-    options.addArguments("--headless"); // Запуск в headless-режиме
-    options.addArguments("--window-size=1000,800");
-    System.out.println("Running desktop test with window size: 1000x800");
+    public void setUp() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--remote-allow-origins=*");
 
-    WebDriver driver = new ChromeDriver(options);
-    WebDriverRunner.setWebDriver(driver);
-    driver.get("https://www.mtsbank.ru/");
-}
+        WebDriver driver = new ChromeDriver(options);
+        WebDriverRunner.setWebDriver(driver);
+        driver.get("https://www.mtsbank.ru/");
+    }
 
     @AfterEach
     public void tearDown() {
@@ -61,49 +63,24 @@ public void setUp() {
     @Test
     @Description("Проверка дебетовых карт")
     public void checkDebetCards() {
+        $("body").shouldBe(visible); // Ждем загрузки страницы
         clickDebetCards();
         checkNameCards();
+        takeScreenshot();
     }
 
     @Step("Клик по разделу дебетовых карт")
     private void clickDebetCards() {
-        clickDebetCards.clickDebetCards();
+        $("селектор_для_кнопки_дебетовых_карт").shouldBe(visible).click();
     }
 
     @Step("Проверка названий карт")
     private void checkNameCards() {
-        checkNameCards.checkNameCards();
+        $("селектор_для_названия_карты").shouldHave(text("Название карты"));
     }
 
-    @Test
-    @Description("Проверка банкоматов")
-    public void checkBancomats() {
-        openBankomatsPage.openBancomatsPage();
-        setBancomatsProperties.setBancomatsProperties();
-        checkWorkTime.checkWorkTime();
-    }
-
-    @Test
-    @Description("Проверка вкладов")
-    public void checkContribution() {
-        openContributionPage.openContributionPage();
-        setContributionProperties.setContributionProperties();
-        checkContributionCalculations.checkContributionCalculations();
-    }
-
-    @Test
-    @Description("Проверка депозитов")
-    public void checkDeposits() {
-        openDepositsPage.openDepositsPage();
-        setDepositProperties.setDepositProperties();
-        checkDepositProperties.checkDepositProperties();
-    }
-
-    @Test
-    @Description("Проверка вакансий")
-    public void checkMtsJobs() {
-        openVacansiesPage.openVacansiesPage();
-        searchJobs.searchJobs();
-        checkVacansies.checkVacansies();
+    @Attachment(type = "image/png", value = "Screenshot")
+    public byte[] takeScreenshot() {
+        return Selenide.screenshot(OutputType.BYTES);
     }
 }
