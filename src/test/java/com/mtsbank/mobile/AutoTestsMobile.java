@@ -1,5 +1,6 @@
 package com.mtsbank.mobile;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.mtsbank.mobile.credit.*;
 import com.mtsbank.mobile.creditcard.*;
@@ -36,18 +37,15 @@ public class AutoTestsMobile {
     private CheckOpenedPersonalAccount checkOpenedPersonalAccount = new CheckOpenedPersonalAccount();
 
     @BeforeEach
-public void setUp() {
-    ChromeOptions options = new ChromeOptions();
-    options.setExperimentalOption("mobileEmulation", Map.of("deviceName", "iPhone 12 Pro"));
-    options.addArguments("--no-sandbox"); // Обязательно для CI
-    options.addArguments("--disable-dev-shm-usage"); // Обязательно для CI
-    options.addArguments("--headless"); // Запуск в headless-режиме
-    System.out.println("Running mobile test with emulation: iPhone 12 Pro");
+    public void setUp() {
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("mobileEmulation", Map.of("deviceName", "iPhone 12 Pro"));
+        System.out.println("Running mobile test with emulation: iPhone 12 Pro");
 
-    WebDriver driver = new ChromeDriver(options);
-    WebDriverRunner.setWebDriver(driver);
-    driver.get("https://www.mtsbank.ru/");
-}
+        WebDriver driver = new ChromeDriver(options);
+        WebDriverRunner.setWebDriver(driver);
+        driver.get("https://www.mtsbank.ru/");
+    }
 
     @AfterEach
     public void tearDown() {
@@ -87,10 +85,15 @@ public void setUp() {
     @Test
     @Description("Проверка личного кабинета")
     public void checkPersonalAccount() {
-        WebDriver driver = WebDriverRunner.getWebDriver();
+        WebDriver driver = Selenide.webdriver().driver().getWebDriver();
         openMtsBankPersonalAccount.openMtsBankPersonalAccount();
         String secondTab = driver.getWindowHandles().toArray()[1].toString();
         driver.switchTo().window(secondTab);
         checkOpenedPersonalAccount.checkOpenedPersonalAccount();
+    }
+
+    @Attachment(type = "image/png", value = "Screenshot")
+    private byte[] takeScreenshot() {
+        return Selenide.screenshot(OutputType.BYTES);
     }
 }
