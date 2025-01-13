@@ -36,15 +36,18 @@ public class AutoTestsMobile {
     private CheckOpenedPersonalAccount checkOpenedPersonalAccount = new CheckOpenedPersonalAccount();
 
     @BeforeEach
-    public void setUp() {
-        ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("mobileEmulation", Map.of("deviceName", "iPhone 12 Pro"));
-        System.out.println("Running mobile test with emulation: iPhone 12 Pro");
+public void setUp() {
+    ChromeOptions options = new ChromeOptions();
+    options.setExperimentalOption("mobileEmulation", Map.of("deviceName", "iPhone 12 Pro"));
+    options.addArguments("--no-sandbox"); // Обязательно для CI
+    options.addArguments("--disable-dev-shm-usage"); // Обязательно для CI
+    options.addArguments("--headless"); // Запуск в headless-режиме
+    System.out.println("Running mobile test with emulation: iPhone 12 Pro");
 
-        WebDriver driver = new ChromeDriver(options);
-        WebDriverRunner.setWebDriver(driver);
-        driver.get("https://www.mtsbank.ru/");
-    }
+    WebDriver driver = new ChromeDriver(options);
+    WebDriverRunner.setWebDriver(driver);
+    driver.get("https://www.mtsbank.ru/");
+}
 
     @AfterEach
     public void tearDown() {
