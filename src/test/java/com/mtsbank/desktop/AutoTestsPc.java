@@ -1,6 +1,5 @@
 package com.mtsbank.desktop;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.mtsbank.desktop.atm24.*;
 import com.mtsbank.desktop.contribution.*;
@@ -61,7 +60,6 @@ public class AutoTestsPc {
     @Description("Проверка дебетовых карт")
     public void checkDebetCards() {
         clickDebetCards();
-        takeScreenshot();
         checkNameCards();
     }
 
@@ -105,10 +103,5 @@ public class AutoTestsPc {
         openVacansiesPage.openVacansiesPage();
         searchJobs.searchJobs();
         checkVacansies.checkVacansies();
-    }
-
-    @Attachment(type = "image/png", value = "Screenshot")
-    private byte[] takeScreenshot() {
-        return Selenide.screenshot(OutputType.BYTES);
     }
 }
