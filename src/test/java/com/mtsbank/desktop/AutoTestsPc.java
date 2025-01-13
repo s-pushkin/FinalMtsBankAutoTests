@@ -43,12 +43,9 @@ public class AutoTestsPc {
     @BeforeEach
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--headless");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--remote-allow-origins=*");
+        options.setCapability("browserVersion", "116.0.5845.111");
+        options.addArguments("--window-size=1000,800");
+        System.out.println("Running desktop test with window size: 1000x800");
 
         WebDriver driver = new ChromeDriver(options);
         WebDriverRunner.setWebDriver(driver);
@@ -63,24 +60,55 @@ public class AutoTestsPc {
     @Test
     @Description("Проверка дебетовых карт")
     public void checkDebetCards() {
-        $("body").shouldBe(visible); // Ждем загрузки страницы
         clickDebetCards();
-        checkNameCards();
         takeScreenshot();
+        checkNameCards();
     }
 
     @Step("Клик по разделу дебетовых карт")
     private void clickDebetCards() {
-        $("селектор_для_кнопки_дебетовых_карт").shouldBe(visible).click();
+        clickDebetCards.clickDebetCards();
     }
 
     @Step("Проверка названий карт")
     private void checkNameCards() {
-        $("селектор_для_названия_карты").shouldHave(text("Название карты"));
+        checkNameCards.checkNameCards();
+    }
+
+    @Test
+    @Description("Проверка банкоматов")
+    public void checkBancomats() {
+        openBankomatsPage.openBancomatsPage();
+        setBancomatsProperties.setBancomatsProperties();
+        checkWorkTime.checkWorkTime();
+    }
+
+    @Test
+    @Description("Проверка вкладов")
+    public void checkContribution() {
+        openContributionPage.openContributionPage();
+        setContributionProperties.setContributionProperties();
+        checkContributionCalculations.checkContributionCalculations();
+    }
+
+    @Test
+    @Description("Проверка депозитов")
+    public void checkDeposits() {
+        openDepositsPage.openDepositsPage();
+        setDepositProperties.setDepositProperties();
+        checkDepositProperties.checkDepositProperties();
+    }
+
+    @Test
+    @Description("Проверка вакансий")
+    public void checkMtsJobs() {
+        openVacansiesPage.openVacansiesPage();
+        searchJobs.searchJobs();
+        checkVacansies.checkVacansies();
     }
 
     @Attachment(type = "image/png", value = "Screenshot")
-    public byte[] takeScreenshot() {
+    private byte[] takeScreenshot() {
         return Selenide.screenshot(OutputType.BYTES);
     }
 }
