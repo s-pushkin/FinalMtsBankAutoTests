@@ -14,9 +14,7 @@ allure {
     version = '2.20.1'
     autoconfigure = true
     aspectjweaver = true
-    useJUnit5 {
-        version = '2.20.1'
-    }
+    configuration = 'testImplementation'
 }
 
 dependencies {
@@ -45,9 +43,6 @@ tasks.withType(ProcessResources) {
     filteringCharset = 'UTF-8'
 }
 
-// Убедитесь, что задача allureReport определена только один раз
-if (!tasks.findByName('allureReport')) {
-    tasks.register('allureReport', Exec) {
-        commandLine 'allure', 'generate', 'build/allure-results', '-o', 'build/reports/allure-report', '--clean'
-    }
+tasks.register('allureReport', Exec) {
+    commandLine 'allure', 'generate', 'build/allure-results', '-o', 'build/reports/allure-report', '--clean'
 }
