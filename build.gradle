@@ -14,7 +14,9 @@ allure {
     version = '2.20.1'
     autoconfigure = true
     aspectjweaver = true
-    configuration = 'testImplementation'
+    useJUnit5 {
+        version = '2.20.1'
+    }
 }
 
 dependencies {
